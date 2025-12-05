@@ -16,7 +16,7 @@
     <Content Include="Alarm.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="cmdmp3win.exe">
+    <Content Condition=" '$(OS)' == 'Windows_NT' " Include="cmdmp3win.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

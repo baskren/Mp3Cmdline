@@ -15,18 +15,24 @@ namespace Mp3Test
             {
                 var playerPath = Path.Combine(folderPath, "cmdmp3win.exe");
                 Shell.ExecuteCommand(playerPath, mp3Path, out string output, out string error);
+                Console.WriteLine($"OUTPUT: {output}   ");
+                Console.WriteLine($"ERROR: {error}");
                 return;
             }        
 
             if (OperatingSystem.IsMacOS())
             {
                 Shell.ExecuteCommand("afplay", mp3Path, out string output, out string error);
+                Console.WriteLine($"OUTPUT: {output}   ");
+                Console.WriteLine($"ERROR: {error}");
                 return;
             }
 
             if (OperatingSystem.IsLinux())
             {
-                Shell.ExecuteCommand("ffplay", mp3Path, out string output, out string error);
+                Shell.ExecuteCommand("ffplay", mp3Path + " -nodisp -autoexit", out string output, out string error);
+                Console.WriteLine($"OUTPUT: {output}   ");
+                Console.WriteLine($"ERROR: {error}");
                 return;
             }
 

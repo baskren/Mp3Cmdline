@@ -35,7 +35,16 @@ public static class Shell
         process.StartInfo.UseShellExecute = false;
 
         // Start the process
-        process.Start();
+        try
+        {
+            process.Start();
+        }
+        catch (Exception e)
+        {
+            output = "";
+            error = $"Application [{command}] is not installed.";
+            return -1;
+        }
 
         // Capture output
         output = process.StandardOutput.ReadToEnd();
